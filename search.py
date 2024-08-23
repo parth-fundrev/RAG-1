@@ -140,23 +140,15 @@ if (
         investor_df.index += 1
 
         # Display both tables side by side with larger size
-        col1, col2 = st.columns(2)
+        col1, col2 = st.tabs(["Companies", "Investors"])
 
         with col1:
             st.subheader("Company Details")
-            st.dataframe(
-                company_df.style.set_properties(
-                    **{"text-align": "left", "width": "100%"}
-                )
-            )
+            st.table(company_df)
 
         with col2:
             st.subheader("Investor Count")
-            st.dataframe(
-                investor_df.style.set_properties(
-                    **{"text-align": "left", "width": "100%"}
-                )
-            )
+            st.table(investor_df)
 
     except Exception as e:
         st.error(e)
